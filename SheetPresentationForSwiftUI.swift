@@ -92,6 +92,21 @@ struct SheetPresentationForSwiftUI<Content>: UIViewRepresentable where Content: 
     }
 }
 
+extension View {
+    
+    func halfSheet<Content>(
+        isPresented: Binding<Bool>,
+        onDismiss: (() -> Void)?,
+        content: @escaping () -> Content) -> some View where Content : View {
+            modifier(
+                halfSheetViewModifier(
+                    isPresented: isPresented,
+                    onDismiss: onDismiss,
+                    content: content)
+            )
+        }
+}
+
 
 
 
